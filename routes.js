@@ -14,11 +14,11 @@ const edit_sala = require('./src/controllers/edit_sala');
 route.get('/', home.pagInicialGet);
 route.post('/', home.pagInicialPost);
 
-route.get('/sala', cadastro.sala);
-route.post('/sala', cadastro.salaInsert);
+route.get('/sala', cadastro.salaGet);
+route.post('/sala', cadastro.salaPost);
 
-route.get('/alunos', cadastro_aluno.aluno);
-route.post('/alunos', multer(config).single('flImage'), cadastro_aluno.alunoInsert);
+route.get('/alunos', cadastro_aluno.alunoGet);
+route.post('/alunos', multer(config).single('flImage'), cadastro_aluno.alunoPost);
 
 route.get('/editarAluno/:id', edit_aluno.alunoEdit);
 route.post('/editarAluno/:id', multer(config).single('flImage'), edit_aluno.adicionarAluno);

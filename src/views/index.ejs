@@ -33,16 +33,18 @@
         <div class="container justify-content-end row col-sm-12 mt-4">
             <div class="row col-md-6 d-flex justify-content-end" style="float: right; gap: 15px;">
                 <h3>Salas de aula: </h3>
+                <% var length_sala = "sala" %>
+                <% var quantidade_alunos = "alunos" %>
                 <form action="/" method="post">
                     <select id="sala" name="sala" onchange="this.form.submit()">
                         <option>Selecione uma sala</option>
                         <% for (let i=0; i<salas.length; i++) { %>
                             <option value='<%= salas[i].IDSala %>' <%= id == salas[i].IDSala ? 'selected' : ''%>> <%= salas[i].Nome %> </option>
-
-                            <% } %>
-                        </select>
-                        
-                        <input type="text" value="<%= salas.length %>" name="nome">
+                            <% if(salas[i].IDSala == id) {length_sala = salas[i].Capacidade
+                                quantidade_alunos = alunos.length
+                            } %>
+                        <% } %>
+                    </select>
                 </form>
                 <a href="/editarSala/<%=id %>" class="" <%=!id? 'hidden' : '' %>>><button class="btn btn-primary">Editar</button></a>
             </div>
@@ -56,7 +58,7 @@
                         <div class="card" style="width: 18rem;">
                             <img class="card-img-top" src="img/<%= alunos[i].Foto %>" alt="Imagem de capa do card" name="foto">
                             <div class="card-body">
-                                <h5 class="card-title" title"><%= alunos[i].Nome %></h5>
+                                <h5 class="card-title" title><%= alunos[i].Nome %></h5>
                                 <p class="card-text">Idade: <%= alunos[i].Idade %></p>
                                 <form action="/editarAluno/<%= alunos[i].IDAluno %>" method="get">
                                      <a href="/editarAluno/"><button type="submit" class="btn btn-secondary">Editar</button></a>
@@ -66,6 +68,7 @@
                         </div>
                     </div>
                 <% } %>
+                <h5>Vagas disponiveis: <%= length_sala - quantidade_alunos %></h5>
             </div>
         </div>
 

@@ -30,7 +30,7 @@ module.exports = {
         const salas = await sala.findAll(
             { 
                 raw: true, 
-                attributes: ['IDSala', 'Nome'] 
+                attributes: ['IDSala', 'Nome', 'Capacidade']  
             }
         );
 

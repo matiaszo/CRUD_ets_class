@@ -31,7 +31,6 @@
                 <div class="card" style="width: 18rem;">
                     <div class="card-body">
                         <h5 class="card-title">Cadastrar um novo aluno</h5>
-                        
                         <form action="/alunos" method="post" enctype="multipart/form-data">
                             <input type="file" id="flImage" name="flImage" accept="image/*">
                                 <img class="card-img" id="imgFoto" name="imgFoto" src="/img/default_person.png" style="border-radius: 50%;" alt="imagem usuario">
@@ -53,7 +52,10 @@
                                     <select id="sala" name="sala">
                                         <option>Selecione uma sala</option>
                                         <% for (let i=0; i<salas.length; i++) { %>
+                                            <% if(salas[i].length == salas[i].length){ %>
                                           <option value='<%= salas[i].IDSala %>'> <%= salas[i].Nome %> </option>
+                                          <% console.log(salas[i].length) %>
+                                            <% } %>
                                         <% } %>
                                     </select>
                                 </div>

@@ -3,16 +3,22 @@ const sala = require('../models/sala')
 
 
 module.exports = {
-    async aluno(req, res){
+    async alunoGet(req, res){
+        const alunos = await aluno.findAll(
+            {
+                raw: true,
+                attributes: ['IDAluno', 'Nome', 'Idade', 'Foto'],
+            }
+        );
         const salas = await sala.findAll(
             {
                 raw: true,
                 attributes: ['IDSala', 'Nome']
             }
         );
-        res.render('../views/alunos', {salas});
+        res.render('../views/alunos', {salas, alunos, id:''});
     },
-    async alunoInsert(req, res){
+    async alunoPost(req, res){
         // Recebe as informações do front-end
         const dados = req.body;
         let foto = 'default_person.png';

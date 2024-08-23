@@ -2,10 +2,10 @@
 const sala = require('../models/sala');
 
 module.exports = {
-    async sala(req, res){
+    async salaGet(req, res){
         res.render('../views/sala');
     },
-    async salaInsert(req, res){
+    async salaPost(req, res){
         // Recebe as informações do front-end
         const dados = req.body;
         // Criando sala no banco de dados

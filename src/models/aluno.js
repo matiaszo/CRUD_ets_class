@@ -36,4 +36,5 @@ aluno.belongsTo(sala, {
     constraint: true, //Garantir integridade referencial
     foreignKey: 'IDSala'
     });
+    
 module.exports = aluno;
